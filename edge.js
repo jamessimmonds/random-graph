@@ -3,6 +3,7 @@ class Edge {
     constructor(v1, v2) {
         this.v1 = v1;
         this.v2 = v2;
+        this.draw();
     }
 
     draw() {
@@ -12,7 +13,7 @@ class Edge {
 
         const definition = moveto + lineto;
 
-        console.log(definition);
+        // console.log(definition);
 
         var svg = document.getElementById("canvas");
         var path = document.createElementNS("http://www.w3.org/2000/svg", "path")

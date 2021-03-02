@@ -7,29 +7,40 @@ function clear () {
 
 }
 
-function drawAll(elems) {
-
-    for(let i = 0; i < elems.length; i++) {
-        elems[i].draw();
-    }
-
+function randbetween(low, high) {
+    return Math.floor(Math.random()*(high-low)+low);
 }
 
 function mainFunction () {
 
-    var v1 = new Vertex(100, 100);
-    var v2 = new Vertex(200, 200);
-    var e1 = new Edge(v1, v2);
+    // API:
+    // var v1 = new Vertex(100, 100);
+    // var v2 = new Vertex(200, 200);
+    // var e1 = new Edge(v1, v2);
+    // clear();
 
-    var v3 = new Vertex(300, 150);
-    var e2 = new Edge(v2, v3);
+    let vertices = [];
 
-    let elems = [e1, v1, v2, v3, e2];
-    drawAll(elems);
+    const MAX_X = 1000;
+    const MAX_Y = 700;
+    const N = 15;
 
-    clear();
+    for (let i = 0; i < N; i++) {
+        let x = randbetween(15,(MAX_X-15));
+        let y = randbetween(15, MAX_Y-15);
+        let name = "Node " + i;
+        vertices.push(new Vertex(name, x, y));
+    }
 
-    var v4 = new Vertex(350, 350);
-    drawAll([v4]);
+    let unvisited = vertices;
+    let next = unvisited[0];
+
+    for (let i = 0; i < N; i++) {
+        closest = closestNode(next, unvisited);
+        index = getIndex(closest, unvisited);
+        new Edge(next, closest);
+        next = closest;
+        unvisited.splice(index, 1);
+    }
 
 }
