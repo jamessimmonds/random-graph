@@ -17,3 +17,10 @@ circle {
 path {
     stroke: rgb(167, 144, 189);
 }
+
+text {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    fill: rgb(167, 144, 189);
+}

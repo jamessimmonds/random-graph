@@ -11,7 +11,7 @@ function randbetween(low, high) {
     return Math.floor(Math.random()*(high-low)+low);
 }
 
-function mainFunction () {
+function mainFunction() {
 
     // API:
     // var v1 = new Vertex(100, 100);
@@ -32,15 +32,11 @@ function mainFunction () {
         vertices.push(new Vertex(name, x, y));
     }
 
-    let unvisited = vertices;
-    let next = unvisited[0];
+    polyline(vertices, N);
 
-    for (let i = 0; i < N; i++) {
-        closest = closestNode(next, unvisited);
-        index = getIndex(closest, unvisited);
-        new Edge(next, closest);
-        next = closest;
-        unvisited.splice(index, 1);
-    }
+    let v1 = new Vertex("v1", 50, 50);
+    let v2 = new Vertex("v2", 100, 150);
+    let v3 = new Vertex("v3", 150, 100);
 
+    triangleMidpoint(v1, v2, v3);
 }

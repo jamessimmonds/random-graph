@@ -17,8 +17,8 @@ class Vertex {
         svg.appendChild(this.circle);
 
         this.text = document.createElementNS("http://www.w3.org/2000/svg", "text")
-        this.text.setAttribute("x", this.x);
-        this.text.setAttribute("y", this.y);
+        this.text.setAttribute("x", this.x+15);
+        this.text.setAttribute("y", this.y+15);
         this.text.innerHTML = this.name;
         svg.appendChild(this.text);
     }
