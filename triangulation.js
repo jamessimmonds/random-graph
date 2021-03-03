@@ -63,8 +63,8 @@ function triangulateThreeVertices(v1, v2, v3, vertices) {
 
 }
 
-function triangulation(vertices) {
-    v1 = vertices[0]
+function triangulateOneVertex(v, vertices) {
+    v1 = v
     v2 = closestNode(v1, vertices);
 
     console.log(v2)
@@ -75,5 +75,13 @@ function triangulation(vertices) {
         if (v3 != v1 && v3 != v2) {
             triangulateThreeVertices(v1, v2, v3, vertices);
         }
+    }
+}
+
+function triangulation(vertices) {
+
+    for (let i = 0; i < vertices.length; i++) {
+        let v = vertices[i];
+        triangulateOneVertex(v, vertices);
     }
 }
