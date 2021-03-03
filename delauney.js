@@ -53,24 +53,36 @@ function addNewPoint(vertex, vertices, triangles) {
 
 }
 
+function vertexEquals(v1, v2) {
+    if (v1.x == v2.x && v1.y && v2.y) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function cleanUp(triangles, supertri) {
-    let superv1 = supertri.v1;
-    let superv2 = supertri.v2;
-    let superv3 = supertri.v3;
+    let sv1 = supertri.v1;
+    let sv2 = supertri.v2;
+    let sv3 = supertri.v3;
 
     for (let i = 0; i < triangles.length; i++) {
         let containsVertexFromSuper = false;
         let triangle = triangles[i];
 
-        if (triangle.v1 == superv1 || triangle.v1 == superv2 || triangle.v1 == superv3) {
+        let tv1 = triangle.v1;
+        let tv2 = triangle.v2;
+        let tv3 = triangle.v3;
+
+        if (vertexEquals(sv1, tv1) || vertexEquals(sv1, tv2) || vertexEquals(sv1, tv3)) {
             containsVertexFromSuper = true;
         }
 
-        if (triangle.v2 == superv1 || triangle.v2 == superv2 || triangle.v2 == superv3) {
+        if (vertexEquals(sv2, tv1) || vertexEquals(sv2, tv2) || vertexEquals(sv2, tv3)) {
             containsVertexFromSuper = true;
         }
 
-        if (triangle.v3 == superv1 || triangle.v3 == superv2 || triangle.v3 == superv3) {
+        if (vertexEquals(sv3, tv1) || vertexEquals(sv3, tv2) || vertexEquals(sv3, tv3)) {
             containsVertexFromSuper = true;
         }
 
@@ -80,6 +92,8 @@ function cleanUp(triangles, supertri) {
             remove(triangles, triangle);
         }
     }
+
+    console.log(triangles);
 }
 
 function triangulation(vertices) {
