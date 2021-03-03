@@ -50,6 +50,6 @@ function mainFunction() {
     // console.log(withinCircumscribedCircle(v4, v1, v2, v3));
     // console.log(withinCircumscribedCircle(v5, v1, v2, v3));
 
-    triangulation(vertices);
+    naiveTriangulation(vertices);
 
 }

@@ -78,7 +78,7 @@ function triangulateOneVertex(v, vertices) {
     }
 }
 
-function triangulation(vertices) {
+function naiveTriangulation(vertices) {
 
     for (let i = 0; i < vertices.length; i++) {
         let v = vertices[i];
