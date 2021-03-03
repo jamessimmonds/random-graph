@@ -54,7 +54,7 @@ function addNewPoint(vertex, vertices, triangles) {
 }
 
 function vertexEquals(v1, v2) {
-    if (v1.x == v2.x && v1.y && v2.y) {
+    if (v1.x == v2.x && v1.y == v2.y) {
         return true;
     } else {
         return false;
@@ -75,19 +75,17 @@ function cleanUp(triangles, supertri) {
         let tv3 = triangle.v3;
 
         if (vertexEquals(sv1, tv1) || vertexEquals(sv1, tv2) || vertexEquals(sv1, tv3)) {
+            console.log("Contains V1");
             containsVertexFromSuper = true;
-        }
-
-        if (vertexEquals(sv2, tv1) || vertexEquals(sv2, tv2) || vertexEquals(sv2, tv3)) {
+        } else if (vertexEquals(sv2, tv1) || vertexEquals(sv2, tv2) || vertexEquals(sv2, tv3)) {
+            console.log("Contains V2");
             containsVertexFromSuper = true;
-        }
-
-        if (vertexEquals(sv3, tv1) || vertexEquals(sv3, tv2) || vertexEquals(sv3, tv3)) {
+        } else if (vertexEquals(sv3, tv1) || vertexEquals(sv3, tv2) || vertexEquals(sv3, tv3)) {
+            console.log("Contains V3");
             containsVertexFromSuper = true;
         }
 
         if (containsVertexFromSuper) {
-            console.log("This method has been called");
             triangle.undraw();
             remove(triangles, triangle);
         }
