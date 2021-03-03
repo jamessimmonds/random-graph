@@ -17,9 +17,18 @@ function isBadTriangle(vertex, triangle) {
     }
 }
 
+function remove(list, item) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] == item) {
+            list.splice(i, 1);
+        }
+    }
+}
+
 function addNewPoint(vertex, vertices, triangles) {
     let badTriangles = [];
 
+    // For each triangle, designate as a "bad" triangle is point within circumscribed circle
     for (let i = 0; i < triangles.length; i++) {
         let triangle = triangles[i];
         if (isBadTriangle(vertex, triangle)) {
@@ -27,7 +36,22 @@ function addNewPoint(vertex, vertices, triangles) {
         }
     }
 
-    console.log(badTriangles);
+    // Add each edge of the bad triangles to the polygon
+    let polygon = [];
+    for (let i = 0; i < badTriangles.length; i++) {
+        polygon.push(badTriangles[i].e1);
+        polygon.push(badTriangles[i].e2);
+        polygon.push(badTriangles[i].e3);
+        badTriangles[i].undraw();
+        remove(triangles, badTriangles[i]);
+    }
+
+    // For each of the edges in the polygon, make triangles
+    for (let i = 0; i < polygon.length; i++) {
+        triangles.push(new Triangle(vertex, polygon[i].v1, polygon[i].v2));
+    }
+
+    console.log(polygon);
 
 }
 
@@ -37,7 +61,6 @@ function triangulation(vertices) {
     let triangles = [supertri];
 
     addNewPoint(vertices[0], vertices, triangles);
-
-    supertri.undraw();
+    addNewPoint(vertices[1], vertices, triangles);
 
 }
