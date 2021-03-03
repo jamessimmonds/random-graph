@@ -34,20 +34,22 @@ function mainFunction() {
         vertices.push(new Vertex(name, x, y));
     }
 
-    polyline(vertices, N);
+    // polyline(vertices, N);
 
     // <!-- Triangulation from this point onwards -->
 
-    let v1 = new Vertex("v1", 50, 50);
-    let v2 = new Vertex("v2", 100, 150);
-    let v3 = new Vertex("v3", 150, 100);
+    // let v1 = new Vertex("v1", 50, 50);
+    // let v2 = new Vertex("v2", 100, 150);
+    // let v3 = new Vertex("v3", 150, 100);
 
-    let v4 = new Vertex("v4", 125, 110);
-    let v5 = new Vertex("v5", 200, 250);
+    // let v4 = new Vertex("v4", 125, 110);
+    // let v5 = new Vertex("v5", 200, 250);
 
-    drawTriangle(v1, v2, v3);
+    // drawTriangle(v1, v2, v3);
 
-    console.log(withinCircumscribedCircle(v4, v1, v2, v3));
-    console.log(withinCircumscribedCircle(v5, v1, v2, v3));
+    // console.log(withinCircumscribedCircle(v4, v1, v2, v3));
+    // console.log(withinCircumscribedCircle(v5, v1, v2, v3));
+
+    triangulation(vertices);
 
 }

@@ -45,6 +45,35 @@ function drawTriangle(v1, v2, v3) {
     new Edge(v2, v3);
 }
 
+// Draw a triangle if there are no vertices within the circumscribed circle of three points
+function triangulateThreeVertices(v1, v2, v3, vertices) {
+
+    let noVerticesWithinCircumscribedCircle = true;
+
+    for (let i = 0; i < vertices.length; i++) {
+        let node = vertices[i];
+        if (withinCircumscribedCircle(node, v1, v2, v3)) {
+            noVerticesWithinCircumscribedCircle = false;
+        }
+    }
+
+    if (noVerticesWithinCircumscribedCircle) {
+        drawTriangle(v1, v2, v3);
+    }
+
+}
+
 function triangulation(vertices) {
-    unvisited = vertices.slice();
+    v1 = vertices[0]
+    v2 = closestNode(v1, vertices);
+
+    console.log(v2)
+
+    for (let i = 0; i < vertices.length; i++) {
+        let v3 = vertices[i];
+
+        if (v3 != v1 && v3 != v2) {
+            triangulateThreeVertices(v1, v2, v3, vertices);
+        }
+    }
 }

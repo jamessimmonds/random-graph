@@ -11,24 +11,28 @@ function closestNode (v1, vertices) {
 
         // console.log("Comparing " + v1.name + " to ", node.name);
 
-        if (closest) {
-            let distance_to_node = distance(v1, node);
-            let distance_to_closest = distance(v1, closest);
+        if (node != v1) {
 
-            // console.log("The distance to this node is " + distance_to_node);
-            // console.log("The distance to the closest is " + distance_to_closest);
-
-            if (distance_to_node < distance_to_closest) {
-                // console.log("This is closer");
-                closest = node;
+            if (closest) {
+                let distance_to_node = distance(v1, node);
+                let distance_to_closest = distance(v1, closest);
+    
+                // console.log("The distance to this node is " + distance_to_node);
+                // console.log("The distance to the closest is " + distance_to_closest);
+    
+                if (distance_to_node < distance_to_closest) {
+                    // console.log("This is closer");
+                    closest = node;
+                } else {
+                    // console.log("This is not closer");
+                }
             } else {
-                // console.log("This is not closer");
+                // console.log("Setting as the first attempt");
+                closest = node;
+                // let distance_to_node = distance(v1, node);
+                // console.log("The distance to this node is " + distance_to_node);
             }
-        } else {
-            // console.log("Setting as the first attempt");
-            closest = node;
-            // let distance_to_node = distance(v1, node);
-            // console.log("The distance to this node is " + distance_to_node);
+
         }
     }
 
