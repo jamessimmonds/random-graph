@@ -51,8 +51,35 @@ function addNewPoint(vertex, vertices, triangles) {
         triangles.push(new Triangle(vertex, polygon[i].v1, polygon[i].v2));
     }
 
-    console.log(polygon);
+}
 
+function cleanUp(triangles, supertri) {
+    let superv1 = supertri.v1;
+    let superv2 = supertri.v2;
+    let superv3 = supertri.v3;
+
+    for (let i = 0; i < triangles.length; i++) {
+        let containsVertexFromSuper = false;
+        let triangle = triangles[i];
+
+        if (triangle.v1 == superv1 || triangle.v1 == superv2 || triangle.v1 == superv3) {
+            containsVertexFromSuper = true;
+        }
+
+        if (triangle.v2 == superv1 || triangle.v2 == superv2 || triangle.v2 == superv3) {
+            containsVertexFromSuper = true;
+        }
+
+        if (triangle.v3 == superv1 || triangle.v3 == superv2 || triangle.v3 == superv3) {
+            containsVertexFromSuper = true;
+        }
+
+        if (containsVertexFromSuper) {
+            console.log("This method has been called");
+            triangle.undraw();
+            remove(triangles, triangle);
+        }
+    }
 }
 
 function triangulation(vertices) {
@@ -60,7 +87,11 @@ function triangulation(vertices) {
     let supertri = supertriangle();
     let triangles = [supertri];
 
-    addNewPoint(vertices[0], vertices, triangles);
-    addNewPoint(vertices[1], vertices, triangles);
+    for (let i = 0; i < vertices.length; i++) {
+        vertex = vertices[i];
+        addNewPoint(vertex, vertices, triangles);
+    }
+
+    cleanUp(triangles, supertri);
 
 }
