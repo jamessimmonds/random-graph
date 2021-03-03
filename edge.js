@@ -16,9 +16,15 @@ class Edge {
         // console.log(definition);
 
         var svg = document.getElementById("canvas");
-        var path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-        path.setAttribute("d", definition);
-        svg.appendChild(path);
+        this.drawing = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        this.drawing.setAttribute("d", definition);
+        svg.appendChild(this.drawing);
+
+    }
+
+    undraw() {
+        var svg = document.getElementById("canvas");
+        svg.removeChild(this.drawing);
     }
 
 }

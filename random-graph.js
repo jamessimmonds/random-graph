@@ -25,11 +25,11 @@ function mainFunction() {
 
     const MAX_X = 1000;
     const MAX_Y = 700;
-    const N = 15;
+    const N = 7;
 
     for (let i = 0; i < N; i++) {
-        let x = randbetween(15,(MAX_X-15));
-        let y = randbetween(15, MAX_Y-15);
+        let x = randbetween(250,(MAX_X-250));
+        let y = randbetween(250, MAX_Y-250);
         let name = "Node " + i;
         vertices.push(new Vertex(name, x, y));
     }
@@ -50,6 +50,8 @@ function mainFunction() {
     // console.log(withinCircumscribedCircle(v4, v1, v2, v3));
     // console.log(withinCircumscribedCircle(v5, v1, v2, v3));
 
-    naiveTriangulation(vertices);
+    // naiveTriangulation(vertices);
+
+    triangulation(vertices);
 
 }
