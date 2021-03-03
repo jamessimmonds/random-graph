@@ -23,6 +23,28 @@ function triangleMidpoint(v1, v2, v3) {
 
 }
 
+function distanceByCoordinates(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(Math.abs(x1-x2),2)+Math.pow(Math.abs(y1-y2),2));
+}
+
+function withinCircumscribedCircle(v, v1, v2, v3) {
+    const midpoint = triangleMidpoint(v1, v2, v3);
+    const distanceFromMidpoint = distanceByCoordinates(midpoint[0], midpoint[1], v.x, v.y);
+    const radius = distanceByCoordinates(midpoint[0], midpoint[1], v1.x, v1.y);
+
+    if (distanceFromMidpoint < radius) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function drawTriangle(v1, v2, v3) {
+    new Edge(v1, v2);
+    new Edge(v1, v3);
+    new Edge(v2, v3);
+}
+
 function triangulation(vertices) {
     unvisited = vertices.slice();
 }

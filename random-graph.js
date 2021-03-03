@@ -19,6 +19,8 @@ function mainFunction() {
     // var e1 = new Edge(v1, v2);
     // clear();
 
+    // <!-- This is all going to get deleted later? -->
+
     let vertices = [];
 
     const MAX_X = 1000;
@@ -34,9 +36,18 @@ function mainFunction() {
 
     polyline(vertices, N);
 
+    // <!-- Triangulation from this point onwards -->
+
     let v1 = new Vertex("v1", 50, 50);
     let v2 = new Vertex("v2", 100, 150);
     let v3 = new Vertex("v3", 150, 100);
 
-    triangleMidpoint(v1, v2, v3);
+    let v4 = new Vertex("v4", 125, 110);
+    let v5 = new Vertex("v5", 200, 250);
+
+    drawTriangle(v1, v2, v3);
+
+    console.log(withinCircumscribedCircle(v4, v1, v2, v3));
+    console.log(withinCircumscribedCircle(v5, v1, v2, v3));
+
 }
