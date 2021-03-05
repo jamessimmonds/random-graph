@@ -25,7 +25,7 @@ function remove(list, item) {
     }
 }
 
-function addNewPoint(vertex, vertices, triangles) {
+function addNewPoint(vertex, triangles) {
     let badTriangles = [];
 
     // For each triangle, designate as a "bad" triangle is point within circumscribed circle
@@ -94,6 +94,27 @@ function cleanUp(triangles, supertri) {
     console.log(triangles);
 }
 
+// My code above isn't working! Desperate attempt to get rid
+// of triangles with vertices of the supertriangle
+function filterTriangles(triangles) {
+    for (let i = 0; i < triangles.length; i++) {
+        let triangle = triangles[i];
+
+        let sharesVertexWithSuper = false;
+
+        if (triangle.v1.name == "v1" || triangle.v2.name == "v1" || triangle.v3.name == "v1" ) {
+            console.log("Contains V1!");
+            triangle.undraw()
+        } else if (triangle.v1.name == "v2" || triangle.v2.name == "v2" || triangle.v3.name == "v2" ) {
+            console.log("Contains V2!");
+            triangle.undraw()
+        } else if (triangle.v1.name == "v3" || triangle.v2.name == "v3" || triangle.v3.name == "v3" ) {
+            console.log("Contains V3!");
+            triangle.undraw()
+        }
+    }
+}
+
 function triangulation(vertices) {
 
     let supertri = supertriangle();
@@ -101,9 +122,11 @@ function triangulation(vertices) {
 
     for (let i = 0; i < vertices.length; i++) {
         vertex = vertices[i];
-        addNewPoint(vertex, vertices, triangles);
+        addNewPoint(vertex, triangles);
     }
 
     cleanUp(triangles, supertri);
+
+    filterTriangles(triangles);
 
 }
