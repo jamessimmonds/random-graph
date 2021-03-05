@@ -58,13 +58,6 @@ function autoSuperTriangle(vertices) {
     let v3_x = max_x+((max_x-min_x)*2);
     let v3_y = min_y; 
 
-    console.log(v1_x);
-    console.log(v1_y);
-    console.log(v2_x);
-    console.log(v2_y);
-    console.log(v3_x);
-    console.log(v3_y);
-
     let v1 = new Vertex("v1", v1_x, v1_y);
     let v2 = new Vertex("v2", v2_x, v2_y);
     let v3 = new Vertex("v3", v3_x, v3_y);
