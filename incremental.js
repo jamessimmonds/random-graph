@@ -120,9 +120,7 @@ function filterTriangles(triangles) {
 
 function triangulation(vertices) {
 
-    let s = autoSuperTriangle(vertices);
-
-    let supertri = supertriangle();
+    let supertri = autoSuperTriangle(vertices);
     let triangles = [supertri];
 
     for (let i = 0; i < vertices.length; i++) {
