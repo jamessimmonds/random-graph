@@ -116,13 +116,10 @@ function filterTriangles(triangles) {
         let sharesVertexWithSuper = false;
 
         if (triangle.v1.name == "v1" || triangle.v2.name == "v1" || triangle.v3.name == "v1" ) {
-            console.log("Contains V1!");
             triangle.undraw()
         } else if (triangle.v1.name == "v2" || triangle.v2.name == "v2" || triangle.v3.name == "v2" ) {
-            console.log("Contains V2!");
             triangle.undraw()
         } else if (triangle.v1.name == "v3" || triangle.v2.name == "v3" || triangle.v3.name == "v3" ) {
-            console.log("Contains V3!");
             triangle.undraw()
         }
     }
