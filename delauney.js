@@ -11,6 +11,7 @@ function isBadTriangle(vertex, triangle) {
     let v3 = triangle.v3;
 
     if (withinCircumscribedCircle(vertex, v1, v2, v3)) {
+        console.log("bad triangle!");
         return true;
     } else {
         return false;
@@ -120,13 +121,11 @@ function triangulation(vertices) {
     let supertri = supertriangle();
     let triangles = [supertri];
 
-    for (let i = 0; i < vertices.length; i++) {
-        vertex = vertices[i];
-        addNewPoint(vertex, triangles);
-    }
+    addNewPoint(vertices[0], triangles);
+    addNewPoint(vertices[1], triangles);
 
-    cleanUp(triangles, supertri);
+    // cleanUp(triangles, supertri);
 
-    filterTriangles(triangles);
+    // filterTriangles(triangles);
 
 }
