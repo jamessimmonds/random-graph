@@ -160,6 +160,6 @@ function triangulation(vertices) {
             filterTriangles(triangles);
             clearInterval(i);
         }
-    }, 300);
+    }, 150);
 
 }

@@ -25,7 +25,7 @@ function mainFunction() {
 
     const MAX_X = 1000;
     const MAX_Y = 700;
-    const N = 50;
+    const N = 40;
 
     const MARGIN = 20;
 
