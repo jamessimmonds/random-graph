@@ -1,10 +1,3 @@
-function supertriangle() {
-    let v1 = new Vertex("v1", 500, 990);
-    let v2 = new Vertex("v2", 10, 10);
-    let v3 = new Vertex("v3", 990, 10);
-    return new Triangle(v1, v2, v3);
-}
-
 function isBadTriangle(vertex, triangle) {
     let v1 = triangle.v1;
     let v2 = triangle.v2;
@@ -126,6 +119,8 @@ function filterTriangles(triangles) {
 }
 
 function triangulation(vertices) {
+
+    let s = autoSuperTriangle(vertices);
 
     let supertri = supertriangle();
     let triangles = [supertri];

@@ -25,7 +25,7 @@ function mainFunction() {
 
     const MAX_X = 1000;
     const MAX_Y = 700;
-    const N = 7;
+    const N = 10;
 
     for (let i = 0; i < N; i++) {
         let x = randbetween(250,(MAX_X-250));
