@@ -57,6 +57,8 @@ function addNewPoint(vertex, triangles) {
         triangles.push(new Triangle(vertex, polygon[i].v1, polygon[i].v2));
     }
 
+    return triangles.slice();
+
 }
 
 function vertexEquals(v1, v2) {
@@ -118,15 +120,46 @@ function filterTriangles(triangles) {
     }
 }
 
+function drawState(state) {
+    for (let i = 0; i < state.length; i++) {
+        let triangle = state[i];
+        triangle.draw();
+    }
+}
+
+function drawVertices(vertices) {
+    for (let i = 0; i < vertices.length; i++) {
+        let vertex = vertices[i];
+        vertex.draw();
+    }
+}
+
 function triangulation(vertices) {
 
     let supertri = autoSuperTriangle(vertices);
     let triangles = [supertri];
 
+    let states = [];
+
     for (let i = 0; i < vertices.length; i++) {
-        addNewPoint(vertices[i], triangles);
+        states.push(addNewPoint(vertices[i], triangles));
     }
 
+    console.log(states);
+
     filterTriangles(triangles);
+    clear();
+
+    var counter = 0;
+    var i = setInterval(function () {
+        clear();
+        drawVertices(vertices);
+        drawState(states[counter]);
+        counter = counter + 1;
+        if (counter >= vertices.length) {
+            filterTriangles(triangles);
+            clearInterval(i);
+        }
+    }, 300);
 
 }
