@@ -27,9 +27,11 @@ function mainFunction() {
     const MAX_Y = 700;
     const N = 10;
 
+    const MARGIN = 20;
+
     for (let i = 0; i < N; i++) {
-        let x = randbetween(250,(MAX_X-250));
-        let y = randbetween(250, MAX_Y-250);
+        let x = randbetween(MARGIN,(MAX_X-MARGIN));
+        let y = randbetween(MARGIN, MAX_Y-MARGIN);
         let name = "Node " + i;
         vertices.push(new Vertex(name, x, y));
     }
