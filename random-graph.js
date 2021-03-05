@@ -52,6 +52,6 @@ function mainFunction() {
 
     // naiveTriangulation(vertices);
 
-    // triangulation(vertices);
+    triangulation(vertices);
 
 }

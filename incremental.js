@@ -11,7 +11,6 @@ function isBadTriangle(vertex, triangle) {
     let v3 = triangle.v3;
 
     if (withinCircumscribedCircle(vertex, v1, v2, v3)) {
-        console.log("bad triangle!");
         return true;
     } else {
         return false;
@@ -40,9 +39,22 @@ function addNewPoint(vertex, triangles) {
     // Add each edge of the bad triangles to the polygon
     let polygon = [];
     for (let i = 0; i < badTriangles.length; i++) {
-        polygon.push(badTriangles[i].e1);
-        polygon.push(badTriangles[i].e2);
-        polygon.push(badTriangles[i].e3);
+
+        let tri = badTriangles[i];
+
+        // Only add an edge to the polygon if not shared with other bad triangles
+        if (edgeNotShared(tri.e1, tri, badTriangles)) {
+            polygon.push(badTriangles[i].e1);
+        }
+
+        if (edgeNotShared(tri.e2, tri, badTriangles)) {
+            polygon.push(badTriangles[i].e2);
+        }
+
+        if (edgeNotShared(tri.e3, tri, badTriangles)) {
+            polygon.push(badTriangles[i].e3);
+        }
+
         badTriangles[i].undraw();
         remove(triangles, badTriangles[i]);
     }
@@ -121,11 +133,10 @@ function triangulation(vertices) {
     let supertri = supertriangle();
     let triangles = [supertri];
 
-    addNewPoint(vertices[0], triangles);
-    addNewPoint(vertices[1], triangles);
+    for (let i = 0; i < vertices.length; i++) {
+        addNewPoint(vertices[i], triangles);
+    }
 
-    // cleanUp(triangles, supertri);
-
-    // filterTriangles(triangles);
+    filterTriangles(triangles);
 
 }
