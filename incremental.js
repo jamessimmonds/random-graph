@@ -161,9 +161,12 @@ function triangulation(vertices) {
         drawPolygon(states[counter][2]);
         counter = counter + 1;
         if (counter >= vertices.length) {
+            clear();
+            drawVertices(vertices);
+            drawState(states[counter-1][0]);
             filterTriangles(triangles);
             clearInterval(i);
         }
-    }, 1000);
+    }, 150);
 
 }
