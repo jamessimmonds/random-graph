@@ -44,7 +44,7 @@ function drawPolygon(polygon) {
         var svg = document.getElementById("canvas");
         p = document.createElementNS("http://www.w3.org/2000/svg", "path");
         p.setAttribute("d", definition);
-        p.setAttribute("stroke", "red");
+        p.setAttribute("color", "black");
         p.setAttribute("stroke-width", 10);
         svg.appendChild(p);
 

@@ -23,9 +23,9 @@ function mainFunction() {
 
     const MAX_X = 1000;
     const MAX_Y = 700;
-    const N = 20;
+    const N = 10;
 
-    const MARGIN = 20;
+    const MARGIN = 200;
 
     for (let i = 0; i < N; i++) {
         let x = randbetween(MARGIN,(MAX_X-MARGIN));
