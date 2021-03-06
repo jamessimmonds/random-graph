@@ -29,6 +29,8 @@ function addNewPoint(vertex, triangles) {
         }
     }
 
+    let badTrianglesState = badTriangles.slice();
+
     // Add each edge of the bad triangles to the polygon
     let polygon = [];
     for (let i = 0; i < badTriangles.length; i++) {
@@ -57,7 +59,7 @@ function addNewPoint(vertex, triangles) {
         triangles.push(new Triangle(vertex, polygon[i].v1, polygon[i].v2));
     }
 
-    return triangles.slice();
+    return [triangles.slice(), badTrianglesState, polygon.slice()];
 
 }
 
@@ -154,12 +156,14 @@ function triangulation(vertices) {
     var i = setInterval(function () {
         clear();
         drawVertices(vertices);
-        drawState(states[counter]);
+        drawState(states[counter][0]);
+        drawBadTriangles(states[counter][1]);
+        drawPolygon(states[counter][2]);
         counter = counter + 1;
         if (counter >= vertices.length) {
             filterTriangles(triangles);
             clearInterval(i);
         }
-    }, 150);
+    }, 1000);
 
 }

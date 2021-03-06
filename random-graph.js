@@ -19,13 +19,11 @@ function mainFunction() {
     // var e1 = new Edge(v1, v2);
     // clear();
 
-    // <!-- This is all going to get deleted later? -->
-
     let vertices = [];
 
     const MAX_X = 1000;
     const MAX_Y = 700;
-    const N = 40;
+    const N = 20;
 
     const MARGIN = 20;
 
